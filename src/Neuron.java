@@ -20,15 +20,10 @@ public class Neuron {
         this.simbol=simbol;
     }
 
-
-
-
     public double checkNeuron( List<Integer> input) {
         double sum=sum(input);
         if (sum>0) return sum;
         return 0;
-
-
 
     }
 
@@ -39,7 +34,6 @@ public class Neuron {
         }
         return sum;
     }
-
 
     public void correct(List<Integer> correction, double speed) {
         for (int i=0; i<scales.size(); i++){

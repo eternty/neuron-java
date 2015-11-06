@@ -21,7 +21,7 @@ public class Net {
     public static void saveInput(char simbol,List<Integer> list) {
 
         toLearn.add(0,new LearnModule(simbol,list));
-        try(BufferedWriter out= new BufferedWriter(new FileWriter("Simple_Save_To_Learn",true)))
+        try(BufferedWriter out= new BufferedWriter(new FileWriter("Storage",true)))
         {
             out.write(simbol);
             for (int i=0; i<list.size(); i++) {
@@ -35,7 +35,7 @@ public class Net {
     public static void loadInput() {
 
         toLearn=new ArrayList<>();
-        try(BufferedReader in= new BufferedReader(new FileReader("Simple_Save_To_Learn")))
+        try(BufferedReader in= new BufferedReader(new FileReader("Storage")))
         {
             while (in.ready()) {
                 List<Integer> list = new ArrayList<>();
@@ -84,7 +84,6 @@ public class Net {
                 if (recognize(x.list)!=x.simbol) learned=false;
         }
 
-
     }
 
     private void teachAllNeurons(char simbol, double speed, List<Integer> input){
@@ -111,7 +110,6 @@ public class Net {
         }
 
         System.out.println();
-
 
     }
 

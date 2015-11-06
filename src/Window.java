@@ -32,7 +32,7 @@ public class Window {
 
     public static void startGUI() {
 
-        JFrame mainFrame= new JFrame("Распознавание чиcел. Генетический алгоритм");
+        JFrame mainFrame= new JFrame("Распознавание чиcел. Щукина Виктория");
 
         rows=5;
         columns=3;
@@ -48,32 +48,35 @@ public class Window {
         };
         pixelPanel.setPreferredSize(new Dimension(400, 1));
 
-        JLabel speedLabel= new JLabel("V:");
+        JLabel speedLabel= new JLabel("Скорость обучения:");
         speed= new JTextField("0.1");
         speed.setPreferredSize(new Dimension(10, 20));
 
-
-        JButton recognize= new JButton("Распознать");
+        JButton recognize= new JButton("Распознать ");
         recognize.addActionListener(new RecognizeListener());
 
-        JButton teach=new JButton("Обучить");
+        JButton teach=new JButton("Обучить       ");
         teach.addActionListener(new TeachListener());
 
         JLabel result= new JLabel("Результат:");
         resultField=new JTextField("");
 
-
-        JMenuBar menuBar=new JMenuBar();
-        menuBar.add(recognize);
-        menuBar.add(teach);
-        menuBar.add(speedLabel);
-        menuBar.add(speed);
-        menuBar.add(result);
-        menuBar.add(resultField);
-        mainFrame.setJMenuBar(menuBar);
+        Box box = new Box(BoxLayout.Y_AXIS);
+        //recognize.setPreferredSize();
+        box.add(recognize);
+        box.add(teach);
+        box.add(speedLabel);
+        box.add(speed);
+        box.add(result);
+        box.add(resultField);
+        JPanel y=new JPanel();
+        y.setPreferredSize(new Dimension(1,1000));
+        box.add(y);
+        //box.setPreferredSize(new Dimension(150,0));
 
         mainFrame.getContentPane().add(pixelPanel,BorderLayout.WEST);
-        mainFrame.setSize(400,600);
+        mainFrame.getContentPane().add(box,BorderLayout.EAST);
+        mainFrame.setSize(600,600);
         mainFrame.setVisible(true);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setResizable(false);
@@ -96,20 +99,19 @@ public class Window {
 
         }
     }
-    
+
     private static class ButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             JButton test=(JButton)e.getSource();
-            if (test.getBackground().equals(Color.BLACK)){
+            if (test.getBackground().equals(Color.CYAN)){
                 test.setBackground(Color.LIGHT_GRAY);
                 out.set(Integer.parseInt(test.getName()), 0);
             }
             else {
-                test.setBackground(Color.BLACK);
+                test.setBackground(Color.CYAN);
                 out.set(Integer.parseInt(test.getName()), 1);
             }
-
 
         }
     }
